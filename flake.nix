@@ -36,6 +36,7 @@
             pkgs.bashInteractive
             pkgs.gtk4
             pkgs.pkg-config
+            pkgs.libadwaita
           ];
         };
       }
