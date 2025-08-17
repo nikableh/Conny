@@ -1,10 +1,14 @@
-use gtk::prelude::*;
-use gtk::{glib, ApplicationWindow, Button};
 use adw::Application;
+use gtk::prelude::*;
+use gtk::{ApplicationWindow, Button, glib};
 
 const APP_ID: &str = "org.gtk_rs.HelloWorld3";
 
 fn main() -> glib::ExitCode {
+    tracing_subscriber::fmt::init();
+
+    tracing::info!("Hello, tracing!");
+
     // Create a new application
     let app = Application::builder().application_id(APP_ID).build();
 

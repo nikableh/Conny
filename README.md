@@ -23,4 +23,6 @@ Use OpenVPN with pleasure.
 
 ## License
 
-This project is under the GPL-3.0-only license.
+This project is under the [GPL-3.0-only] license.
+
+[GPL-3.0-only]: https://opensource.org/license/gpl-3-0
