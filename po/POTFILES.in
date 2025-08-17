@@ -1,0 +1,6 @@
+data/moe.nikableh.Conny.desktop.in.in
+data/moe.nikableh.Conny.gschema.xml.in
+data/moe.nikableh.Conny.metainfo.xml.in.in
+data/resources/ui/shortcuts.ui
+data/resources/ui/window.ui
+src/application.rs

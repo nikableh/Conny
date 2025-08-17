@@ -1,6 +1,6 @@
 # Conny
 
-Use OpenVPN with pleasure.
+Use OpenVPN configs from GUI.
 
 ## Goals
 

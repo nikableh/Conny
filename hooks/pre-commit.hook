@@ -1,0 +1,17 @@
+#!/bin/sh
+
+echo "--Checking Rust code style--"
+cargo fmt --all -- --check
+if test $? != 0; then
+    echo "--FAIL--"
+    echo "Please format the code by running 'cargo fmt --all'"
+    exit 1
+fi
+
+echo "--Checking Meson code style--"
+meson format --check-only
+if test $? != 0; then
+    echo "--FAIL--"
+    echo "Please format the code by running 'meson format -i'"
+    exit 1
+fi

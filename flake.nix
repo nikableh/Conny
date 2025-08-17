@@ -34,9 +34,12 @@
           buildInputs = [
             rustToolchain
             pkgs.bashInteractive
+            pkgs.git
+            pkgs.coreutils
             pkgs.gtk4
             pkgs.pkg-config
             pkgs.libadwaita
+            pkgs.meson
           ];
         };
       }
