@@ -14,7 +14,13 @@ Use OpenVPN with pleasure.
 - [ ] Ability to view logs
 - [ ] Color messages of different log levels in logs
 
-### Infrustructure
+### Best practices
+
+- [ ] Full compliance with GNOME Circle guidelines
+- [ ] Full compliance with GNOME HIG
+- [ ] Infrastructure for adding translations
+
+### Meta
 
 - [ ] Package with Nix
 - [ ] Package with Flatpak
