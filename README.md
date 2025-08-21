@@ -4,21 +4,19 @@ Use OpenVPN from GUI.
 
 A GUI application for managing OpenVPN profiles and active connections.
 
-## Building
+## Building the project
 
-### Locally for development
-
-To compile and run application locally (for development) use project's Nix
-`devShell`. This way you would get all the necessary and avoid having to
-recompile the whole application from scratch each time.
+To compile and run the application locally (for development purposes) use
+project's Nix `devShell`. This way you would get all the necessary dependencies
+and avoid having to recompile the whole application from scratch.
 
 ```shell
 nix develop
-meson setup build -Dprofile=dev -Dprefix=$(pwd)/installdir
-meson compile -C build
-meson install -C build
-./installdir/bin/conny
+./dev.sh
 ```
+
+You can also run `./dev.sh` outside of `nix develop` shell, but you then have to
+manually insure all the dependencies are installed.
 
 ## Goals
 
