@@ -1,16 +1,12 @@
 global_conf = configuration_data()
-global_conf.set('APP_ID', app_id)
-global_conf.set('APP_NAME', app_name)
-global_conf.set('PKGDATADIR', pkgdatadir)
-global_conf.set('PROFILE', profile)
-global_conf.set('VERSION', version + version_suffix)
-global_conf.set('GETTEXT_PACKAGE', gettext_package)
-global_conf.set('LOCALEDIR', localedir)
-configure_file(
-  input: 'config.rs',
-  output: 'config.rs',
-  configuration: global_conf
-)
+global_conf.set_quoted('APP_ID', app_id)
+global_conf.set_quoted('APP_NAME', app_name)
+global_conf.set_quoted('PKGDATADIR', pkgdatadir)
+global_conf.set_quoted('PROFILE', profile)
+global_conf.set_quoted('VERSION', version + version_suffix)
+global_conf.set_quoted('GETTEXT_PACKAGE', gettext_package)
+global_conf.set_quoted('LOCALEDIR', localedir)
+configure_file(input: 'config.rs.in', output: 'config.rs', configuration: global_conf)
 
 # Copy the config.rs output to the source directory.
 run_command(
