@@ -10,16 +10,24 @@ else
   message('Building in debug mode')
 endif
 
-cargo_env = ['CARGO_HOME=' + meson.project_build_root() / 'cargo-home']
+cargo_build_env = environment()
 
-global_conf_env = environment()
-global_conf_env.set('APP_ID', app_id)
-global_conf_env.set('APP_NAME', app_name)
-global_conf_env.set('PKGDATADIR', pkgdatadir)
-global_conf_env.set('PROFILE', profile)
-global_conf_env.set('VERSION', version + version_suffix)
-global_conf_env.set('GETTEXT_PACKAGE', gettext_package)
-global_conf_env.set('LOCALEDIR', localedir)
+cargo_build_env.set('APP_ID', app_id)
+cargo_build_env.set('APP_NAME', app_name)
+cargo_build_env.set('PKGDATADIR', pkgdatadir)
+cargo_build_env.set('PROFILE', profile)
+cargo_build_env.set('VERSION', version + version_suffix)
+cargo_build_env.set('GETTEXT_PACKAGE', gettext_package)
+cargo_build_env.set('LOCALEDIR', localedir)
+
+cargo_build_env.set('CARGO_HOME', meson.project_build_root() / 'cargo-home')
+cargo_build_env.set('GSETTINGS_SCHEMA_DIR', meson.project_build_root() / 'data')
+
+if get_option('profile') == 'dev'
+  cargo_build_env.set('RESOURCES_FILE', meson.project_build_root() / 'data' / 'resources' / 'resources.gresource')
+else
+  cargo_build_env.set('RESOURCES_FILE', localedir / 'resources.gresource')
+endif
 
 custom_target(
   'cargo-build',
@@ -28,12 +36,11 @@ custom_target(
   build_by_default: true,
   console: true,
   depends: resources,
-  env: global_conf_env,
+  env: cargo_build_env,
   install: true,
   install_dir: bindir,
   command: [
     'env',
-    cargo_env,
     cargo,
     'build',
     cargo_options,
