@@ -7,6 +7,10 @@
 # develop` shell (preferred) or have all dependencies and their correct versions
 # installed on your system. 
 
+set -o errexit
+set -o nounset
+set -o pipefail
+
 meson setup build -Dprofile=dev -Dprefix=$(pwd)/installdir
 meson compile -C build
 meson install -C build
