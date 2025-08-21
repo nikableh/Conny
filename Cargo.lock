@@ -3,17 +3,6 @@
 version = 4
 
 [[package]]
-name = "Conny"
-version = "0.1.0"
-dependencies = [
- "gettext-rs",
- "gtk4",
- "libadwaita",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
 name = "aho-corasick"
 version = "1.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -87,6 +76,17 @@ name = "cfg-if"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9555578bc9e57714c812a1f84e4fc5b4d21fcb063490c624de019f7464c91268"
+
+[[package]]
+name = "conny"
+version = "0.1.0"
+dependencies = [
+ "gettext-rs",
+ "gtk4",
+ "libadwaita",
+ "tracing",
+ "tracing-subscriber",
+]
 
 [[package]]
 name = "equivalent"

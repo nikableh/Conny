@@ -1,5 +1,5 @@
 project(
-    'Conny',
+    'conny',
     'rust',
     version: '0.1.0',
     meson_version: '>= 1.5.2',
@@ -9,7 +9,14 @@ project(
 i18n = import('i18n')
 gnome = import('gnome')
 
-base_id = 'moe.nikableh.Conny'
+top_level_domain = 'moe' 
+domain_name = 'nikableh'
+app_name = 'Conny'
+
+base_id = top_level_domain + '.' + domain_name + '.' + app_name
+
+short_description = 'Use OpenVPN from GUI'
+description = 'A GUI application for managing OpenVPN profiles and active connections'
 
 dependency('glib-2.0', version: '>= 2.84.3')
 dependency('gio-2.0', version: '>= 2.84.3')
@@ -41,23 +48,11 @@ if get_option('profile') == 'dev'
     else
         version_suffix = '-@0@'.format(vcs_tag)
     endif
-    application_id = '@0@.@1@'.format(base_id, profile)
+    app_id = '@0@.@1@'.format(base_id, profile)
 else
     profile = ''
     version_suffix = ''
-    application_id = base_id
-endif
-
-if get_option('profile') == 'dev'
-    # Setup pre-commit hook for ensuring coding style is always consistent
-    message('Setting up git pre-commit hook..')
-    run_command(
-        'cp',
-        '-f',
-        'hooks/pre-commit.hook',
-        '.git/hooks/pre-commit',
-        check: false,
-    )
+    app_id = base_id
 endif
 
 subdir('data')

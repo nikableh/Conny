@@ -102,7 +102,7 @@ impl ExampleApplication {
 
     fn setup_css(&self) {
         let provider = gtk::CssProvider::new();
-        provider.load_from_resource("/com/belmoussaoui/GtkRustTemplate/style.css");
+        provider.load_from_resource("/moe/nikableh/Conny/style.css");
         if let Some(display) = gdk::Display::default() {
             gtk::style_context_add_provider_for_display(
                 &display,
@@ -120,16 +120,13 @@ impl ExampleApplication {
     fn show_about_dialog(&self) {
         let dialog = gtk::AboutDialog::builder()
             .logo_icon_name(APP_ID)
-            // FIXME Insert your license of choice here
-            // .license_type(gtk::License::MitX11)
-            // FIXME Insert your website here
-            // .website("https://gitlab.gnome.org/bilelmoussaoui/gtk-rust-template/")
+            .license_type(gtk::License::Gpl30Only)
+            .website("https://github.com/nikableh/Conny/")
             .version(VERSION)
             .transient_for(&self.main_window())
             .translator_credits(gettext("translator-credits"))
             .modal(true)
             .authors(Self::authors())
-            .artists(vec!["Bilal Elmoussaoui"])
             .build();
 
         dialog.present();
@@ -148,7 +145,7 @@ impl Default for ExampleApplication {
     fn default() -> Self {
         glib::Object::builder()
             .property("application-id", APP_ID)
-            .property("resource-base-path", "/com/belmoussaoui/GtkRustTemplate/")
+            .property("resource-base-path", "/moe/nikableh/Conny/")
             .build()
     }
 }

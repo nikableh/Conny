@@ -1,36 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>@app-id@</id>
+
+  <name>@app-name@</name>
+  <summary>@short-description@</summary>
+  
   <metadata_license>CC0</metadata_license>
-  <project_license>GPL-3.0-only</project_license>
-  <name>Conny</name>
-  <summary>Use OpenVPN from GUI</summary>
+  <project_license>@license@</project_license>
+  
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+
   <description>
-    <p>A GUI application for managing OpenVPN profiles and active connections.</p>
+    <p>
+      @description@.
+    </p>
   </description>
+
+  <launchable type="desktop-id">@app-id@.desktop</launchable>
+
   <screenshots>
     <screenshot type="default">
-      <!-- FIXME Set the project git url and replace the screenshot -->
-      <image>https://gitlab.gnome.org/bilelmoussaoui/gtk-rust-template/raw/master/data/resources/screenshots/screenshot1.png</image>
-      <caption>Main window</caption>
+      <image>https://raw.githubusercontent.com/nikableh/Conny/refs/heads/main/data/resources/screenshots/screenshot1.png</image>
+      <caption>TODO FIXME</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/nikableh/Conny/refs/heads/main/data/resources/screenshots/screenshot1.png</image>
+      <caption>TODO FIXME</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/nikableh/Conny/refs/heads/main/data/resources/screenshots/screenshot1.png</image>
+      <caption>TODO FIXME</caption>
     </screenshot>
   </screenshots>
+  
+  <content_rating type="oars-1.1" />
+
   <url type="homepage">https://github.com/nikableh/Conny</url>
   <url type="bugtracker">https://github.com/nikableh/Conny/issues</url>
-  <url type="vcs-browser">https://gitlab.gnome.org/bilelmoussaoui/gtk-rust-template</url>
   <url type="translate">https://github.com/nikableh/Conny/-/tree/master/po</url>
-  <content_rating type="oars-1.1" />
+  
   <releases>
-    <release version="0.1.0" date="2099-01-01" />
+    <release version="0.1.0" date="TODO-FIXME" />
   </releases>
+
   <developer id="@nika@nikableh.moe">
     <name translate="yes">Nika</name>
   </developer>
+
   <branding>
     <color type="primary" scheme_preference="light">#c2ba5b</color>
     <color type="primary" scheme_preference="dark">#993d3d</color>
   </branding>
+  
   <update_contact>nika@nikableh.moe</update_contact>
   <translation type="gettext">@gettext-package@</translation>
-  <launchable type="desktop-id">@app-id@.desktop</launchable>
 </component>

@@ -32,7 +32,7 @@
 
         packages.default =
           let
-            name = "Conny";
+            name = "conny";
             version = "0.1.0";
             src = ./.;
           in
@@ -41,7 +41,7 @@
 
             cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
               inherit src;
-              hash = "sha256-mMfMA9t4rpJW4FsSRKrmxKo5QarOcI4KTakfFa2xuYw=";
+              hash = "sha256-f22NQx4clEIA9Ci/TtLKjT3RbxYUIxDNAZWOmxVbsdY=";
             };
 
             nativeBuildInputs = [
@@ -76,11 +76,8 @@
         devShells.default = pkgs.mkShell {
           inputsFrom = [ self.packages.${system}.default ];
 
-          # Most of these dependencies are for building a Flatpak version of the
-          # application.
           buildInputs = [
             pkgs.bashInteractive
-
             # https://github.com/NixOS/nixpkgs/issues/54312#issuecomment-455775414
             # Enable services.flatpak.enable = true; in configuration.nix, it
             # won't work without it.

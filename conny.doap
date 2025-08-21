@@ -6,9 +6,10 @@
   xmlns="http://usefulinc.com/ns/doap#">
 
   <name xml:lang="en">Conny</name>
-  <shortdesc xml:lang="en">
-    Use OpenVPN from GUI
-  </shortdesc>
+  <shortdesc xml:lang="en">Use OpenVPN from GUI</shortdesc>
+  <description xml:lang="en">
+    A GUI application for managing OpenVPN profiles and active connections.
+  </description>
   <bug-database rdf:resource="https://github.com/nikableh/Conny/" />
   <category rdf:resource="http://api.gnome.org/doap-extensions#apps" />
   <programming-language>Rust</programming-language>
@@ -16,15 +17,7 @@
     <foaf:Person>
       <foaf:name>Nika</foaf:name>
       <foaf:mbox rdf:resource="mailto:nika@nikableh.moe" />
-      <!-- FIXME Set your gnome user id here -->
-      <!-- <gnome:userid>gnome_user_id</gnome:userid> -->
-      <foaf:account>
-        <foaf:OnlineAccount>
-          <!-- FIXME Set your gitlab handle here, rdf:resource also accepts github.com or gitlab.com -->
-          <!-- <foaf:accountServiceHomepage rdf:resource="https://gitlab.gnome.org" /> -->
-          <!-- <foaf:accountName>gitlab_user_handle</foaf:accountName> -->
-        </foaf:OnlineAccount>
-      </foaf:account>
+      <gnome:userid>nikableh</gnome:userid>
     </foaf:Person>
   </maintainer>
 </Project>

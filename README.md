@@ -2,6 +2,8 @@
 
 Use OpenVPN from GUI.
 
+A GUI application for managing OpenVPN profiles and active connections.
+
 ## Goals
 
 ### Technical
