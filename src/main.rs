@@ -7,7 +7,7 @@ use gtk::{gio, glib};
 
 use crate::config::APP_NAME;
 
-use self::application::ExampleApplication;
+use self::application::ConnyApplication;
 use self::config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
 
 fn main() -> glib::ExitCode {
@@ -24,6 +24,6 @@ fn main() -> glib::ExitCode {
     let res = gio::Resource::load(RESOURCES_FILE).expect("Could not load gresource file");
     gio::resources_register(&res);
 
-    let app = ExampleApplication::default();
+    let app = ConnyApplication::default();
     app.run()
 }

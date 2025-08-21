@@ -2,7 +2,7 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 
-use crate::application::ExampleApplication;
+use crate::application::ConnyApplication;
 use crate::config::{APP_ID, PROFILE};
 
 mod imp {
@@ -10,13 +10,13 @@ mod imp {
 
     #[derive(Debug, gtk::CompositeTemplate)]
     #[template(resource = "/moe/nikableh/Conny/ui/window.ui")]
-    pub struct ConnyApplicationWindow {
+    pub struct ConnyWindow {
         #[template_child]
         pub headerbar: TemplateChild<gtk::HeaderBar>,
         pub settings: gio::Settings,
     }
 
-    impl Default for ConnyApplicationWindow {
+    impl Default for ConnyWindow {
         fn default() -> Self {
             Self {
                 headerbar: TemplateChild::default(),
@@ -26,9 +26,9 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for ConnyApplicationWindow {
-        const NAME: &'static str = "ConnyApplicationWindow";
-        type Type = super::ConnyApplicationWindow;
+    impl ObjectSubclass for ConnyWindow {
+        const NAME: &'static str = "ConnyWindow";
+        type Type = super::ConnyWindow;
         type ParentType = gtk::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
@@ -41,7 +41,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for ConnyApplicationWindow {
+    impl ObjectImpl for ConnyWindow {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
@@ -56,8 +56,8 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for ConnyApplicationWindow {}
-    impl WindowImpl for ConnyApplicationWindow {
+    impl WidgetImpl for ConnyWindow {}
+    impl WindowImpl for ConnyWindow {
         // Save window state on delete event
         fn close_request(&self) -> glib::Propagation {
             if let Err(err) = self.obj().save_window_size() {
@@ -69,19 +69,19 @@ mod imp {
         }
     }
 
-    impl ApplicationWindowImpl for ConnyApplicationWindow {}
+    impl ApplicationWindowImpl for ConnyWindow {}
 }
 
 glib::wrapper! {
-    pub struct ConnyApplicationWindow(ObjectSubclass<imp::ConnyApplicationWindow>)
+    pub struct ConnyWindow(ObjectSubclass<imp::ConnyWindow>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup,
                     gtk::Root, gtk::Native, gtk::ShortcutManager,
                     gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
-impl ConnyApplicationWindow {
-    pub fn new(app: &ExampleApplication) -> Self {
+impl ConnyWindow {
+    pub fn new(app: &ConnyApplication) -> Self {
         glib::Object::builder().property("application", app).build()
     }
 

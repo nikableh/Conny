@@ -5,8 +5,8 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 
-use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
-use crate::window::ConnyApplicationWindow;
+use crate::config::{APP_ID, APP_NAME, PKGDATADIR, PROFILE, VERSION};
+use crate::window::ConnyWindow;
 
 mod imp {
     use super::*;
@@ -14,22 +14,22 @@ mod imp {
     use std::cell::OnceCell;
 
     #[derive(Debug, Default)]
-    pub struct ExampleApplication {
-        pub window: OnceCell<WeakRef<ConnyApplicationWindow>>,
+    pub struct ConnyApplication {
+        pub window: OnceCell<WeakRef<ConnyWindow>>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for ExampleApplication {
-        const NAME: &'static str = "ExampleApplication";
-        type Type = super::ExampleApplication;
+    impl ObjectSubclass for ConnyApplication {
+        const NAME: &'static str = "ConnyApplication";
+        type Type = super::ConnyApplication;
         type ParentType = gtk::Application;
     }
 
-    impl ObjectImpl for ExampleApplication {}
+    impl ObjectImpl for ConnyApplication {}
 
-    impl ApplicationImpl for ExampleApplication {
+    impl ApplicationImpl for ConnyApplication {
         fn activate(&self) {
-            debug!("GtkApplication<ExampleApplication>::activate");
+            debug!("GtkApplication<ConnyApplication>::activate");
             self.parent_activate();
             let app = self.obj();
 
@@ -39,7 +39,7 @@ mod imp {
                 return;
             }
 
-            let window = ConnyApplicationWindow::new(&app);
+            let window = ConnyWindow::new(&app);
             self.window
                 .set(window.downgrade())
                 .expect("Window already set.");
@@ -48,7 +48,7 @@ mod imp {
         }
 
         fn startup(&self) {
-            debug!("GtkApplication<ExampleApplication>::startup");
+            debug!("GtkApplication<ConnyApplication>::startup");
             self.parent_startup();
             let app = self.obj();
 
@@ -61,17 +61,17 @@ mod imp {
         }
     }
 
-    impl GtkApplicationImpl for ExampleApplication {}
+    impl GtkApplicationImpl for ConnyApplication {}
 }
 
 glib::wrapper! {
-    pub struct ExampleApplication(ObjectSubclass<imp::ExampleApplication>)
+    pub struct ConnyApplication(ObjectSubclass<imp::ConnyApplication>)
         @extends gio::Application, gtk::Application,
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
-impl ExampleApplication {
-    fn main_window(&self) -> ConnyApplicationWindow {
+impl ConnyApplication {
+    fn main_window(&self) -> ConnyWindow {
         self.imp().window.get().unwrap().upgrade().unwrap()
     }
 
@@ -133,7 +133,7 @@ impl ExampleApplication {
     }
 
     pub fn run(&self) -> glib::ExitCode {
-        info!("GTK Rust Template ({})", APP_ID);
+        info!("{} ({})", APP_NAME, APP_ID);
         info!("Version: {} ({})", VERSION, PROFILE);
         info!("Datadir: {}", PKGDATADIR);
 
@@ -141,7 +141,7 @@ impl ExampleApplication {
     }
 }
 
-impl Default for ExampleApplication {
+impl Default for ConnyApplication {
     fn default() -> Self {
         glib::Object::builder()
             .property("application-id", APP_ID)
