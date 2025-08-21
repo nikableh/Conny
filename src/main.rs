@@ -1,5 +1,4 @@
 mod application;
-#[rustfmt::skip]
 mod config;
 mod window;
 

@@ -6,5 +6,3 @@ target
 flatpak-app
 build
 result
-
-/src/config.rs
