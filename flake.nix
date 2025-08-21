@@ -26,11 +26,7 @@
             name = (pkgs.lib.importTOML ./rust-toolchain.toml).toolchain.channel;
             sha256 = "sha256-+9FmLhAOezBZCOziO0Qct1NOrfpjNsXxc/8I0c7BdKE=";
           }).toolchain;
-      in
-      {
-        formatter = pkgs.nixfmt-rfc-style;
-
-        packages.default =
+        conny =
           let
             name = "conny";
             version = "0.1.0";
@@ -46,14 +42,14 @@
 
             nativeBuildInputs = [
               rustToolchain
-              
+
               pkgs.pkg-config
               pkgs.meson
               pkgs.ninja
               pkgs.git
               pkgs.appstream
               pkgs.desktop-file-utils
-              
+
               pkgs.rustPlatform.cargoSetupHook
               pkgs.wrapGAppsHook4
             ];
@@ -70,8 +66,16 @@
               license = pkgs.lib.licenses.mit;
             };
           };
+      in
+      {
+        formatter = pkgs.nixfmt-rfc-style;
 
-        app.default = self.packages.${system}.default;
+        packages.default = conny;
+
+        apps.default = {
+          type = "app";
+          program = "${self.packages.${system}.default}/bin/conny";
+        };
 
         devShells.default = pkgs.mkShell {
           inputsFrom = [ self.packages.${system}.default ];
