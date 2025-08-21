@@ -6,7 +6,7 @@ use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
-use crate::window::ExampleApplicationWindow;
+use crate::window::ConnyApplicationWindow;
 
 mod imp {
     use super::*;
@@ -15,7 +15,7 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct ExampleApplication {
-        pub window: OnceCell<WeakRef<ExampleApplicationWindow>>,
+        pub window: OnceCell<WeakRef<ConnyApplicationWindow>>,
     }
 
     #[glib::object_subclass]
@@ -39,7 +39,7 @@ mod imp {
                 return;
             }
 
-            let window = ExampleApplicationWindow::new(&app);
+            let window = ConnyApplicationWindow::new(&app);
             self.window
                 .set(window.downgrade())
                 .expect("Window already set.");
@@ -71,7 +71,7 @@ glib::wrapper! {
 }
 
 impl ExampleApplication {
-    fn main_window(&self) -> ExampleApplicationWindow {
+    fn main_window(&self) -> ConnyApplicationWindow {
         self.imp().window.get().unwrap().upgrade().unwrap()
     }
 

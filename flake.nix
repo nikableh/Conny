@@ -32,7 +32,7 @@
 
         packages.default =
           let
-            name = "conny";
+            name = "Conny";
             version = "0.1.0";
             src = ./.;
           in
@@ -46,13 +46,16 @@
 
             nativeBuildInputs = [
               rustToolchain
-              pkgs.rustPlatform.cargoSetupHook
+              
               pkgs.pkg-config
               pkgs.meson
               pkgs.ninja
               pkgs.git
               pkgs.appstream
               pkgs.desktop-file-utils
+              
+              pkgs.rustPlatform.cargoSetupHook
+              pkgs.wrapGAppsHook4
             ];
 
             buildInputs = [
@@ -67,6 +70,8 @@
               license = pkgs.lib.licenses.mit;
             };
           };
+
+        app.default = self.packages.${system}.default;
 
         devShells.default = pkgs.mkShell {
           inputsFrom = [ self.packages.${system}.default ];
