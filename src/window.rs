@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use adw::{gio, glib};

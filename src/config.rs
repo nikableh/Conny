@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+
 pub const APP_ID: &str = env!("APP_ID");
 pub const APP_NAME: &str = env!("APP_NAME");
 pub const GETTEXT_PACKAGE: &str = env!("GETTEXT_PACKAGE");

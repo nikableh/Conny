@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+
 use gettextrs::gettext;
 use tracing::{debug, info};
 
@@ -5,7 +7,7 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use adw::{gdk, gio, glib};
 
-use crate::config::{APP_ID, APP_NAME, PKGDATADIR, PROFILE, VERSION};
+use crate::config::{APP_ID, APP_NAME, PKGDATADIR, VERSION};
 use crate::window::ConnyWindow;
 
 mod imp {
@@ -29,7 +31,7 @@ mod imp {
 
     impl ApplicationImpl for ConnyApplication {
         fn activate(&self) {
-            debug!("GtkApplication<ConnyApplication>::activate");
+            debug!("Application::activate");
             self.parent_activate();
             let app = self.obj();
 
@@ -48,7 +50,7 @@ mod imp {
         }
 
         fn startup(&self) {
-            debug!("GtkApplication<ConnyApplication>::startup");
+            debug!("Application::startup");
             self.parent_startup();
             let app = self.obj();
 
@@ -136,7 +138,7 @@ impl ConnyApplication {
 
     pub fn run(&self) -> glib::ExitCode {
         info!("{} ({})", APP_NAME, APP_ID);
-        info!("Version: {} ({})", VERSION, PROFILE);
+        info!("Version: {}", VERSION,);
         info!("Datadir: {}", PKGDATADIR);
 
         ApplicationExtManual::run(self)
