@@ -1,6 +1,6 @@
-use gtk::prelude::*;
-use gtk::subclass::prelude::*;
-use gtk::{gio, glib};
+use adw::prelude::*;
+use adw::subclass::prelude::*;
+use adw::{gio, glib};
 
 use crate::application::ConnyApplication;
 use crate::config::{APP_ID, PROFILE};

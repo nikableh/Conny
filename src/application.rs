@@ -1,9 +1,9 @@
 use gettextrs::gettext;
 use tracing::{debug, info};
 
-use gtk::prelude::*;
-use gtk::subclass::prelude::*;
-use gtk::{gdk, gio, glib};
+use adw::prelude::*;
+use adw::subclass::prelude::*;
+use adw::{gdk, gio, glib};
 
 use crate::config::{APP_ID, APP_NAME, PKGDATADIR, PROFILE, VERSION};
 use crate::window::ConnyWindow;
@@ -22,7 +22,7 @@ mod imp {
     impl ObjectSubclass for ConnyApplication {
         const NAME: &'static str = "ConnyApplication";
         type Type = super::ConnyApplication;
-        type ParentType = gtk::Application;
+        type ParentType = adw::Application;
     }
 
     impl ObjectImpl for ConnyApplication {}
@@ -62,11 +62,13 @@ mod imp {
     }
 
     impl GtkApplicationImpl for ConnyApplication {}
+
+    impl AdwApplicationImpl for ConnyApplication {}
 }
 
 glib::wrapper! {
     pub struct ConnyApplication(ObjectSubclass<imp::ConnyApplication>)
-        @extends gio::Application, gtk::Application,
+        @extends gio::Application, gtk::Application, adw::Application,
         @implements gio::ActionMap, gio::ActionGroup;
 }
 

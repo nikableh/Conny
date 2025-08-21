@@ -3,7 +3,7 @@ mod config;
 mod window;
 
 use gettextrs::{LocaleCategory, gettext};
-use gtk::{gio, glib};
+use adw::{gio, glib};
 
 use crate::config::APP_NAME;
 
