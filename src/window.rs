@@ -13,15 +13,12 @@ mod imp {
     #[derive(Debug, gtk::CompositeTemplate)]
     #[template(resource = "/moe/nikableh/Conny/ui/window.ui")]
     pub struct ConnyWindow {
-        #[template_child]
-        pub headerbar: TemplateChild<gtk::HeaderBar>,
         pub settings: gio::Settings,
     }
 
     impl Default for ConnyWindow {
         fn default() -> Self {
             Self {
-                headerbar: TemplateChild::default(),
                 settings: gio::Settings::new(APP_ID),
             }
         }
@@ -31,7 +28,7 @@ mod imp {
     impl ObjectSubclass for ConnyWindow {
         const NAME: &'static str = "ConnyWindow";
         type Type = super::ConnyWindow;
-        type ParentType = gtk::ApplicationWindow;
+        type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -59,6 +56,7 @@ mod imp {
     }
 
     impl WidgetImpl for ConnyWindow {}
+
     impl WindowImpl for ConnyWindow {
         // Save window state on delete event
         fn close_request(&self) -> glib::Propagation {
@@ -72,11 +70,13 @@ mod imp {
     }
 
     impl ApplicationWindowImpl for ConnyWindow {}
+
+    impl AdwApplicationWindowImpl for ConnyWindow {}
 }
 
 glib::wrapper! {
     pub struct ConnyWindow(ObjectSubclass<imp::ConnyWindow>)
-        @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow,
+        @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup,
                     gtk::Root, gtk::Native, gtk::ShortcutManager,
                     gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;

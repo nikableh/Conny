@@ -122,18 +122,19 @@ impl ConnyApplication {
     }
 
     fn show_about_dialog(&self) {
-        let dialog = gtk::AboutDialog::builder()
-            .logo_icon_name(APP_ID)
-            .license_type(gtk::License::Gpl30Only)
-            .website("https://github.com/nikableh/Conny/")
+        let dialog = adw::AboutDialog::builder()
+            .application_name(APP_NAME)
+            .application_icon(APP_ID)
             .version(VERSION)
-            .transient_for(&self.main_window())
+            .license_type(gtk::License::Gpl30Only)
+            .developers(Self::authors())
+            .website("https://github.com/nikableh/Conny/")
+            .issue_url("https://github.com/nikableh/Conny/issues")
             .translator_credits(gettext("translator-credits"))
-            .modal(true)
-            .authors(Self::authors())
+            .copyright("© 2025 Nika")
             .build();
 
-        dialog.present();
+        dialog.present(self.active_window().as_ref());
     }
 
     pub fn run(&self) -> glib::ExitCode {

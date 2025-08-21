@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
   <menu id="primary_menu">
     <section>
       <item>
@@ -16,26 +18,36 @@
       </item>
     </section>
   </menu>
-  <template class="ConnyWindow" parent="GtkApplicationWindow">
-    <child type="titlebar">
-      <object class="GtkHeaderBar" id="headerbar">
-        <child type="end">
-          <object class="GtkMenuButton" id="appmenu_button">
-            <property name="icon-name">open-menu-symbolic</property>
-            <property name="menu-model">primary_menu</property>
-            <property name="primary">True</property>
-            <property name="tooltip-text" translatable="yes">Main Menu</property>
+  <template class="ConnyWindow" parent="AdwApplicationWindow">
+    <property name="content">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <child type="start">
+              <object class="AdwSpinner" id="spinner">
+                <property name="margin-start">12</property>
+                <property name="visible">false</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkMenuButton" id="appmenu_button">
+                <property name="primary">True</property>
+                <property name="icon-name">open-menu-symbolic</property>
+                <property name="tooltip-text" translatable="yes">Main Menu</property>
+                <property name="menu-model">primary_menu</property>
+              </object>
+            </child>
           </object>
         </child>
+        <property name="content">
+          <object class="GtkLabel">
+            <property name="label" translatable="yes">Hello world!</property>
+            <style>
+              <class name="title-header"/>
+            </style>
+          </object>
+        </property>
       </object>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label">
-        <property name="label" translatable="yes">Hello world!</property>
-        <style>
-          <class name="title-header"/>
-        </style>
-      </object>
-    </child>
+    </property>
   </template>
 </interface>
