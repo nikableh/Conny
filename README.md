@@ -1,6 +1,6 @@
 # Conny
 
-Use OpenVPN configs from GUI.
+Use OpenVPN from GUI.
 
 ## Goals
 
@@ -32,3 +32,7 @@ Use OpenVPN configs from GUI.
 This project is under the [GPL-3.0-only] license.
 
 [GPL-3.0-only]: https://opensource.org/license/gpl-3-0
+
+## Code Of Conduct
+
+This project follows the [GNOME Code of Conduct](https://conduct.gnome.org/).

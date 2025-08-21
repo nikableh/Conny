@@ -2,7 +2,7 @@ project(
     'Conny',
     'rust',
     version: '0.1.0',
-    meson_version: '>= 1.7.2',
+    meson_version: '>= 1.5.2',
     license: 'GPL-3.0-only',
 )
 
@@ -48,7 +48,7 @@ else
     application_id = base_id
 endif
 
-if get_option('profile') == 'development'
+if get_option('profile') == 'dev'
     # Setup pre-commit hook for ensuring coding style is always consistent
     message('Setting up git pre-commit hook..')
     run_command(

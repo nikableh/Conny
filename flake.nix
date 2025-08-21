@@ -30,16 +30,57 @@
       {
         formatter = pkgs.nixfmt-rfc-style;
 
+        packages.default =
+          let
+            name = "conny";
+            version = "0.1.0";
+            src = ./.;
+          in
+          pkgs.stdenv.mkDerivation {
+            inherit name version src;
+
+            cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+              inherit src;
+              hash = "sha256-mMfMA9t4rpJW4FsSRKrmxKo5QarOcI4KTakfFa2xuYw=";
+            };
+
+            nativeBuildInputs = [
+              rustToolchain
+              pkgs.rustPlatform.cargoSetupHook
+              pkgs.pkg-config
+              pkgs.meson
+              pkgs.ninja
+              pkgs.git
+              pkgs.appstream
+              pkgs.desktop-file-utils
+            ];
+
+            buildInputs = [
+              pkgs.gtk4
+              pkgs.libadwaita
+              pkgs.gettext
+            ];
+
+            meta = {
+              description = "Use OpenVPN from GUI";
+              homepage = "https://github.com/nikableh/Conny";
+              license = pkgs.lib.licenses.mit;
+            };
+          };
+
         devShells.default = pkgs.mkShell {
+          inputsFrom = [ self.packages.${system}.default ];
+
+          # Most of these dependencies are for building a Flatpak version of the
+          # application.
           buildInputs = [
-            rustToolchain
             pkgs.bashInteractive
-            pkgs.git
-            pkgs.coreutils
-            pkgs.gtk4
-            pkgs.pkg-config
-            pkgs.libadwaita
-            pkgs.meson
+
+            # https://github.com/NixOS/nixpkgs/issues/54312#issuecomment-455775414
+            # Enable services.flatpak.enable = true; in configuration.nix, it
+            # won't work without it.
+            pkgs.flatpak
+            pkgs.flatpak-builder
           ];
         };
       }

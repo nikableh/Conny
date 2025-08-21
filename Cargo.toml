@@ -6,7 +6,7 @@ edition = "2024"
 
 [dependencies]
 adw = { version = "0.8.0", package = "libadwaita", features = ["v1_7"] }
-gettext-rs = "0.7.2"
+gettext-rs = { version = "0.7.2", features = ["gettext-system"] }
 gtk = { version = "0.10.0", package = "gtk4", features = [
     "gnome_48",
     "blueprint",

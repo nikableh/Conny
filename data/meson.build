@@ -43,6 +43,7 @@ appdata_file = i18n.merge_file(
   install: true,
   install_dir: datadir / 'metainfo'
 )
+
 # Validate Appdata
 if appstreamcli.found()
   test(

@@ -4,7 +4,7 @@
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0-only</project_license>
   <name>Conny</name>
-  <summary>Use OpenVPN configs from GUI</summary>
+  <summary>Use OpenVPN from GUI</summary>
   <description>
     <p>A GUI application for managing OpenVPN profiles and active connections.</p>
   </description>

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Conny
-Comment=Use OpenVPN configs from GUI
+Comment=Use OpenVPN from GUI
 Type=Application
 Exec=conny
 Terminal=false
