@@ -1,8 +1,6 @@
 # Resources
 gresource_conf = configuration_data()
-gresource_conf.set('top-level-domain', top_level_domain)
-gresource_conf.set('domain-name', domain_name)
-gresource_conf.set('app-name', app_name)
+gresource_conf.set('base-id-slashed', base_id_slashed)
 resources = gnome.compile_resources(
   'resources',
   configure_file(

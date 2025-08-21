@@ -13,7 +13,8 @@ top_level_domain = 'moe'
 domain_name = 'nikableh'
 app_name = 'Conny'
 
-base_id = top_level_domain + '.' + domain_name + '.' + app_name
+base_id_dotted = '.'.join([top_level_domain, domain_name, app_name])
+base_id_slashed = '/'.join([top_level_domain, domain_name, app_name])
 
 short_description = 'Use OpenVPN from GUI'
 description = 'A GUI application for managing OpenVPN profiles and active connections'
@@ -48,11 +49,11 @@ if get_option('profile') == 'dev'
     else
         version_suffix = '-@0@'.format(vcs_tag)
     endif
-    app_id = '@0@.@1@'.format(base_id, profile)
+    app_id = '@0@.@1@'.format(base_id_dotted, profile)
 else
     profile = ''
     version_suffix = ''
-    app_id = base_id
+    app_id = base_id_dotted
 endif
 
 subdir('data')

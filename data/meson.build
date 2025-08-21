@@ -11,7 +11,7 @@ desktop_conf.set('icon', app_id)
 desktop_file = i18n.merge_file(
   type: 'desktop',
   input: configure_file(
-    input: '@0@.desktop.in.in'.format(base_id),
+    input: '@0@.desktop.in.in'.format(base_id_dotted),
     output: '@BASENAME@',
     configuration: desktop_conf
   ),
@@ -42,7 +42,7 @@ appdata_conf.set('short-description', short_description)
 appdata_conf.set('description', description)
 appdata_file = i18n.merge_file(
   input: configure_file(
-    input: '@0@.metainfo.xml.in.in'.format(base_id),
+    input: '@0@.metainfo.xml.in.in'.format(base_id_dotted),
     output: '@BASENAME@',
     configuration: appdata_conf
   ),
@@ -65,13 +65,11 @@ endif
 
 # GSchema
 gschema_conf = configuration_data()
-gschema_conf.set('top-level-domain', top_level_domain)
-gschema_conf.set('domain-name', domain_name)
-gschema_conf.set('app-name', app_name)
+gschema_conf.set('base-id-slashed', base_id_slashed)
 gschema_conf.set('app-id', app_id)
 gschema_conf.set('gettext-package', gettext_package)
 configure_file(
-  input: '@0@.gschema.xml.in'.format(base_id),
+  input: '@0@.gschema.xml.in'.format(base_id_dotted),
   output: '@0@.gschema.xml'.format(app_id),
   configuration: gschema_conf,
   install: true,
@@ -92,7 +90,7 @@ service_conf.set('app-id', app_id)
 service_conf.set('bindir', bindir)
 service_conf.set('executable', meson.project_name())
 configure_file(
-    input: '@0@.service.in'.format(base_id),
+    input: '@0@.service.in'.format(base_id_dotted),
     output: '@0@.service'.format(app_id),
     configuration: service_conf,
     install: true,
