@@ -47,8 +47,8 @@
     <release version="0.1.0" date="TODO-FIXME" />
   </releases>
 
-  <developer id="@nika@nikableh.moe">
-    <name translate="yes">Nika</name>
+  <developer id="moe.nikableh">
+    <name>Nika</name>
   </developer>
 
   <branding>
