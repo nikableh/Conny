@@ -1,5 +1,6 @@
 global_conf = configuration_data()
 global_conf.set('APP_ID', app_id)
+global_conf.set('APP_NAME', app_name)
 global_conf.set('PKGDATADIR', pkgdatadir)
 global_conf.set('PROFILE', profile)
 global_conf.set('VERSION', version + version_suffix)

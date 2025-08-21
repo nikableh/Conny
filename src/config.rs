@@ -1,4 +1,5 @@
 pub const APP_ID: &str = "@APP_ID@";
+pub const APP_NAME: &str = "@APP_NAME@";
 pub const GETTEXT_PACKAGE: &str = "@GETTEXT_PACKAGE@";
 pub const LOCALEDIR: &str = "@LOCALEDIR@";
 pub const PKGDATADIR: &str = "@PKGDATADIR@";
