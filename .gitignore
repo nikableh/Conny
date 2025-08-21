@@ -6,3 +6,4 @@ target
 flatpak-app
 build
 result
+installdir

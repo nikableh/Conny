@@ -19,15 +19,10 @@ cargo_build_env.set('PROFILE', profile)
 cargo_build_env.set('VERSION', version + version_suffix)
 cargo_build_env.set('GETTEXT_PACKAGE', gettext_package)
 cargo_build_env.set('LOCALEDIR', localedir)
+cargo_build_env.set('RESOURCES_FILE', pkgdatadir / 'resources.gresource')
 
 cargo_build_env.set('CARGO_HOME', meson.project_build_root() / 'cargo-home')
 cargo_build_env.set('GSETTINGS_SCHEMA_DIR', meson.project_build_root() / 'data')
-
-if get_option('profile') == 'dev'
-  cargo_build_env.set('RESOURCES_FILE', meson.project_build_root() / 'data' / 'resources' / 'resources.gresource')
-else
-  cargo_build_env.set('RESOURCES_FILE', localedir / 'resources.gresource')
-endif
 
 custom_target(
   'cargo-build',
