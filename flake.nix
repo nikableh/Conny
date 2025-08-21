@@ -75,7 +75,6 @@
 
         devShells.default = pkgs.mkShell {
           inputsFrom = [ self.packages.${system}.default ];
-
           buildInputs = [
             pkgs.bashInteractive
             # https://github.com/NixOS/nixpkgs/issues/54312#issuecomment-455775414

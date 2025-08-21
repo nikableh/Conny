@@ -1,0 +1,11 @@
+# These variables should be set at build time by Meson to their real values.
+# These here are only placeholders.
+[env]
+APP_ID = "missing_env_var"
+APP_NAME = "missing_env_var"
+GETTEXT_PACKAGE = "missing_env_var"
+LOCALEDIR = "missing_env_var"
+PKGDATADIR = "missing_env_var"
+PROFILE = "missing_env_var"
+RESOURCES_FILE = "missing_env_var"
+VERSION = "missing_env_var"
