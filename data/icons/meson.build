@@ -1,10 +1,11 @@
 install_data(
-  '@0@.svg'.format(app_id),
-  install_dir: iconsdir / 'hicolor' / 'scalable' / 'apps'
+  'app.svg',
+  install_dir: iconsdir / 'hicolor' / 'scalable' / 'apps',
+  rename: '@0@-symbolic.svg'.format(app_id)
 )
 
 install_data(
-  '@0@-symbolic.svg'.format(base_id_dotted),
+  'app-symbolic.svg',
   install_dir: iconsdir / 'hicolor' / 'symbolic' / 'apps',
   rename: '@0@-symbolic.svg'.format(app_id)
 )
