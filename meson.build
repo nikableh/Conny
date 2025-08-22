@@ -13,11 +13,11 @@ top_level_domain = 'moe'
 domain_name = 'nikableh'
 app_name = 'Conny'
 
-base_id_dotted = '.'.join([top_level_domain, domain_name, app_name])
-base_id_slashed = '/'.join([top_level_domain, domain_name, app_name])
-
 short_description = 'Use OpenVPN from GUI'
 description = 'A GUI application for managing OpenVPN profiles and active connections'
+
+base_id_dotted = '.'.join([top_level_domain, domain_name, app_name])
+base_id_slashed = '/'.join([top_level_domain, domain_name, app_name])
 
 dependency('glib-2.0', version: '>= 2.84.3')
 dependency('gio-2.0', version: '>= 2.84.3')

@@ -22,6 +22,13 @@ nix develop
 You can also run `./dev.sh` without `nix develop` shell, but you then have to
 manually ensure the correctness of all dependencies.
 
+Alternatively, you can run application with a single command. But this would do
+a full clean rebuild for any change in the source code.
+
+```shell
+nix run
+```
+
 ### Flatpak
 
 Flatpak would rebuild the project from scratch each time, which is not very
