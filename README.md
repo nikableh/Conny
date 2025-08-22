@@ -1,15 +1,17 @@
-# Conny
+# GTK4/Adwaita/Rust/Flatpak/Nix Template
 
-Use OpenVPN from GUI.
+A template for developing stunning desktop applications with...
 
-A GUI application for managing OpenVPN profiles and active connections.
+- **GTK4 and Adwaita** beauty
+- **Flatpak and Nix** reproducibility
+- **Rust** safety and developer experience
 
 ## Building from source
 
-### Locally with Nix (preferred)
+### Nix (preferred)
 
-To compile and run the application locally (for development purposes) use
-project's Nix `devShell`. This way you would get all the necessary dependencies
+To compile and run the application locally (for development purposes) use Nix
+and its development shell. This way you get all the necessary dependencies
 and avoid having to recompile the whole application from scratch.
 
 ```shell
@@ -17,43 +19,38 @@ nix develop
 ./dev.sh
 ```
 
-You can also run `./dev.sh` outside of `nix develop` shell, but you then have to
-manually insure all the dependencies are installed.
+You can also run `./dev.sh` without `nix develop` shell, but you then have to
+manually ensure the correctness of all dependencies.
 
 ### Flatpak
 
-With Flatpak you would have to rebuild the project from scratch every time, so
-it's not very friendly in situations when you need rapid iterations.
+Flatpak would rebuild the project from scratch each time, which is not very
+pleasant in situations when you need iterate rapidly.
+
+> [!IMPORTANT]  
+> On NixOS you have to enable Flatpak service in your `configuration.nix` file,
+> for this to work.
+>
+> ```nix
+> services.flatpak.enable = true;
+> ```
 
 ```shell
+flatpak install --user org.gnome.Sdk//48 org.gnome.Platform//48 org.freedesktop.Sdk.Extension.rust-stable//24.08 org.freedesktop.Sdk.Extension.llvm18//24.08
 flatpak-builder --user --force-clean flatpak_app build-aux/moe.nikableh.Conny.Devel.json
 flatpak-builder --run flatpak_app build-aux/moe.nikableh.Conny.Devel.json conny
 ```
 
-## Goals
+## Best practices
 
-### Technical
+This is a list of resources you better familiarize yourself with, if you want
+your application to be perfect.
 
-- [ ] Successful VPN initialization
-- [ ] Save profiles
-- [ ] Work in background
-- [ ] Working 2FA
-- [ ] Ability to add custom console options
-- [ ] Ability to view logs
-- [ ] Color messages of different log levels in logs
+- Ensure compliance with [GNOME Circle guidelines]
+- Ensure compliance with [GNOME Human Interface Guidelines]
 
-### Best practices
-
-- [ ] Full compliance with GNOME Circle guidelines
-- [ ] Full compliance with GNOME HIG
-- [ ] Infrastructure for adding translations
-
-### Meta
-
-- [ ] Package with Nix
-- [ ] Package with Flatpak
-- [ ] Apply for GNOME Circle
-- [ ] Publish to Flathub
+[GNOME Circle guidelines]: https://gitlab.gnome.org/Teams/Releng/AppOrganization/-/blob/main/AppCriteria.md
+[GNOME Human Interface Guidelines]: https://developer.gnome.org/hig/
 
 ## License
 
