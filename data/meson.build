@@ -3,7 +3,6 @@ subdir('resources')
 
 # Desktop file
 desktop_conf = configuration_data()
-desktop_conf.set('version', meson.project_version())
 desktop_conf.set('app-name', app_name)
 desktop_conf.set('short-description', short_description)
 desktop_conf.set('executable', meson.project_name())

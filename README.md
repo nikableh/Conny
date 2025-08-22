@@ -4,7 +4,9 @@ Use OpenVPN from GUI.
 
 A GUI application for managing OpenVPN profiles and active connections.
 
-## Building the project
+## Building from source
+
+### Locally with Nix (preferred)
 
 To compile and run the application locally (for development purposes) use
 project's Nix `devShell`. This way you would get all the necessary dependencies
@@ -17,6 +19,16 @@ nix develop
 
 You can also run `./dev.sh` outside of `nix develop` shell, but you then have to
 manually insure all the dependencies are installed.
+
+### Flatpak
+
+With Flatpak you would have to rebuild the project from scratch every time, so
+it's not very friendly in situations when you need rapid iterations.
+
+```shell
+flatpak-builder --user --force-clean flatpak_app build-aux/moe.nikableh.Conny.Devel.json
+flatpak-builder --run flatpak_app build-aux/moe.nikableh.Conny.Devel.json conny
+```
 
 ## Goals
 
