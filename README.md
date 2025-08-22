@@ -6,6 +6,23 @@ A template for developing stunning desktop applications with...
 - **Flatpak and Nix** reproducibility
 - **Rust** safety and developer experience
 
+## Using this template
+
+_For now_ this template has a bunch of strings that must be set manually in
+different places (both file names and strings). To make this job easier, I
+replaced them with these placeholders:
+
+- `^AUTHOR_NAME^` (e.g. `Nika`)
+- `^AUTHOR_EMAIL^` (e.g. `nika@nikableh.moe`)
+- `^TOP_LEVEL_DOMAIN^` (e.g. `moe` or `io`)
+- `^DOMAIN_NAME^` (e.g. `nikableh` or `github.username`)
+- `^APP_NAME^` (e.g. `AwesomeApplication`)
+- `^URL^` (e.g. `https://github.com/nikableh/AwesomeApplication`)
+- `^URL_ISSUES^` (e.g. `https://github.com/nikableh/AwesomeApplication/issues`)
+- `^EXECUTABLE^` (e.g. `awesome-application`)
+- `^SHORT_DESCRIPTION^` (e.g. `Short description of the application`)
+- `^LONG_DESCRIPTION^` (e.g. `Long description of the application`)
+
 ## Building from source
 
 ### Nix (preferred)
@@ -44,8 +61,8 @@ pleasant in situations when you need iterate rapidly.
 
 ```shell
 flatpak install --user org.gnome.Sdk//48 org.gnome.Platform//48 org.freedesktop.Sdk.Extension.rust-stable//24.08 org.freedesktop.Sdk.Extension.llvm18//24.08
-flatpak-builder --user --force-clean flatpak_app build-aux/moe.nikableh.Conny.Devel.json
-flatpak-builder --run flatpak_app build-aux/moe.nikableh.Conny.Devel.json conny
+flatpak-builder --user --force-clean flatpak_app build-aux/^TOP_LEVEL_DOMAIN^.^DOMAIN_NAME^.^APP_NAME^.Devel.json
+flatpak-builder --run flatpak_app build-aux/^TOP_LEVEL_DOMAIN^.^DOMAIN_NAME^.^APP_NAME^.Devel.json ^EXECUTABLE^
 ```
 
 ## Best practices

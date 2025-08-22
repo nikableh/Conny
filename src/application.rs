@@ -8,7 +8,7 @@ use adw::subclass::prelude::*;
 use adw::{gdk, gio, glib};
 
 use crate::config::{APP_ID, APP_NAME, PKGDATADIR, VERSION};
-use crate::window::ConnyWindow;
+use crate::window::^APP_NAME^Window;
 
 mod imp {
     use super::*;
@@ -16,20 +16,20 @@ mod imp {
     use std::cell::OnceCell;
 
     #[derive(Debug, Default)]
-    pub struct ConnyApplication {
-        pub window: OnceCell<WeakRef<ConnyWindow>>,
+    pub struct ^APP_NAME^Application {
+        pub window: OnceCell<WeakRef<^APP_NAME^Window>>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for ConnyApplication {
-        const NAME: &'static str = "ConnyApplication";
-        type Type = super::ConnyApplication;
+    impl ObjectSubclass for ^APP_NAME^Application {
+        const NAME: &'static str = "^APP_NAME^Application";
+        type Type = super::^APP_NAME^Application;
         type ParentType = adw::Application;
     }
 
-    impl ObjectImpl for ConnyApplication {}
+    impl ObjectImpl for ^APP_NAME^Application {}
 
-    impl ApplicationImpl for ConnyApplication {
+    impl ApplicationImpl for ^APP_NAME^Application {
         fn activate(&self) {
             debug!("Application::activate");
             self.parent_activate();
@@ -41,7 +41,7 @@ mod imp {
                 return;
             }
 
-            let window = ConnyWindow::new(&app);
+            let window = ^APP_NAME^Window::new(&app);
             self.window
                 .set(window.downgrade())
                 .expect("Window already set.");
@@ -63,19 +63,19 @@ mod imp {
         }
     }
 
-    impl GtkApplicationImpl for ConnyApplication {}
+    impl GtkApplicationImpl for ^APP_NAME^Application {}
 
-    impl AdwApplicationImpl for ConnyApplication {}
+    impl AdwApplicationImpl for ^APP_NAME^Application {}
 }
 
 glib::wrapper! {
-    pub struct ConnyApplication(ObjectSubclass<imp::ConnyApplication>)
+    pub struct ^APP_NAME^Application(ObjectSubclass<imp::^APP_NAME^Application>)
         @extends gio::Application, gtk::Application, adw::Application,
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
-impl ConnyApplication {
-    fn main_window(&self) -> ConnyWindow {
+impl ^APP_NAME^Application {
+    fn main_window(&self) -> ^APP_NAME^Window {
         self.imp().window.get().unwrap().upgrade().unwrap()
     }
 
@@ -106,7 +106,7 @@ impl ConnyApplication {
 
     fn setup_css(&self) {
         let provider = gtk::CssProvider::new();
-        provider.load_from_resource("/moe/nikableh/Conny/style.css");
+        provider.load_from_resource("/^TOP_LEVEL_DOMAIN^/^DOMAIN_NAME^/^APP_NAME^/style.css");
         if let Some(display) = gdk::Display::default() {
             gtk::style_context_add_provider_for_display(
                 &display,
@@ -128,10 +128,10 @@ impl ConnyApplication {
             .version(VERSION)
             .license_type(gtk::License::Gpl30Only)
             .developers(Self::authors())
-            .website("https://github.com/nikableh/Conny/")
-            .issue_url("https://github.com/nikableh/Conny/issues")
+            .website("^URL^")
+            .issue_url("^URL_ISSUES^")
             .translator_credits(gettext("translator-credits"))
-            .copyright("© 2025 Nika")
+            .copyright("© 2025 ^AUTHOR_NAME^")
             .build();
 
         dialog.present(self.active_window().as_ref());
@@ -146,11 +146,11 @@ impl ConnyApplication {
     }
 }
 
-impl Default for ConnyApplication {
+impl Default for ^APP_NAME^Application {
     fn default() -> Self {
         glib::Object::builder()
             .property("application-id", APP_ID)
-            .property("resource-base-path", "/moe/nikableh/Conny/")
+            .property("resource-base-path", "/^TOP_LEVEL_DOMAIN^/^DOMAIN_NAME^/^APP_NAME^/")
             .build()
     }
 }

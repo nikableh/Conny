@@ -1,5 +1,5 @@
 project(
-    'conny',
+    '^EXECUTABLE^',
     'rust',
     version: '0.1.0',
     meson_version: '>= 1.5.2',
@@ -9,12 +9,12 @@ project(
 i18n = import('i18n')
 gnome = import('gnome')
 
-top_level_domain = 'moe' 
-domain_name = 'nikableh'
-app_name = 'Conny'
+top_level_domain = '^TOP_LEVEL_DOMAIN^' 
+domain_name = '^DOMAIN_NAME^'
+app_name = '^APP_NAME^'
 
-short_description = 'Use OpenVPN from GUI'
-description = 'A GUI application for managing OpenVPN profiles and active connections'
+short_description = '^SHORT_DESCRIPTION^'
+description = '^LONG_DESCRIPTION^'
 
 base_id_dotted = '.'.join([top_level_domain, domain_name, app_name])
 base_id_slashed = '/'.join([top_level_domain, domain_name, app_name])

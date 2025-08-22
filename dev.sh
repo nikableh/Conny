@@ -14,4 +14,4 @@ set -o pipefail
 meson setup build -Dprofile=dev -Dprefix=$(pwd)/installdir
 meson compile -C build
 meson install -C build
-XDG_DATA_DIRS=$(pwd)/installdir/share:$XDG_DATA_DIRS ./installdir/bin/conny
+XDG_DATA_DIRS=$(pwd)/installdir/share:$XDG_DATA_DIRS ./installdir/bin/^EXECUTABLE^

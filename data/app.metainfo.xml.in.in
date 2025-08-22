@@ -4,10 +4,10 @@
 
   <name>@app-name@</name>
   <summary>@short-description@</summary>
-  
+
   <metadata_license>CC0</metadata_license>
   <project_license>@license@</project_license>
-  
+
   <supports>
     <control>pointing</control>
     <control>keyboard</control>
@@ -24,38 +24,37 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/nikableh/Conny/refs/heads/main/data/resources/screenshots/screenshot1.png</image>
+      <image>https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png</image>
       <caption>TODO FIXME</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/nikableh/Conny/refs/heads/main/data/resources/screenshots/screenshot1.png</image>
+      <image>https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png</image>
       <caption>TODO FIXME</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/nikableh/Conny/refs/heads/main/data/resources/screenshots/screenshot1.png</image>
+      <image>https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png</image>
       <caption>TODO FIXME</caption>
     </screenshot>
   </screenshots>
-  
+
   <content_rating type="oars-1.1" />
 
-  <url type="homepage">https://github.com/nikableh/Conny</url>
-  <url type="bugtracker">https://github.com/nikableh/Conny/issues</url>
-  <url type="translate">https://github.com/nikableh/Conny/-/tree/master/po</url>
-  
+  <url type="homepage">^URL^</url>
+  <url type="bugtracker">^URL_ISSUES^</url>
+
   <releases>
     <release version="0.1.0" date="1901-01-01" />
   </releases>
 
-  <developer id="moe.nikableh">
-    <name>Nika</name>
+  <developer id="^TOP_LEVEL_DOMAIN^.^DOMAIN_NAME^">
+    <name>^AUTHOR_NAME^</name>
   </developer>
 
   <branding>
     <color type="primary" scheme_preference="light">#c2ba5b</color>
     <color type="primary" scheme_preference="dark">#993d3d</color>
   </branding>
-  
-  <update_contact>nika@nikableh.moe</update_contact>
+
+  <update_contact>^AUTHOR_EMAIL^</update_contact>
   <translation type="gettext">@gettext-package@</translation>
 </component>

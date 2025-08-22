@@ -1,5 +1,5 @@
 {
-    "id": "moe.nikableh.Conny.Devel",
+    "id": "^TOP_LEVEL_DOMAIN^.^DOMAIN_NAME^.^APP_NAME^.Devel",
     "runtime": "org.gnome.Platform",
     "runtime-version": "48",
     "sdk": "org.gnome.Sdk",
@@ -7,13 +7,13 @@
         "org.freedesktop.Sdk.Extension.rust-stable",
         "org.freedesktop.Sdk.Extension.llvm18"
     ],
-    "command": "conny",
+    "command": "^EXECUTABLE^",
     "finish-args": [
         "--share=ipc",
         "--socket=fallback-x11",
         "--socket=wayland",
         "--device=dri",
-        "--env=RUST_LOG=conny=debug",
+        "--env=RUST_LOG=^EXECUTABLE^=debug",
         "--env=G_MESSAGES_DEBUG=none",
         "--env=RUST_BACKTRACE=1"
     ],
@@ -36,7 +36,7 @@
     },
     "modules": [
         {
-            "name": "conny",
+            "name": "^EXECUTABLE^",
             "buildsystem": "meson",
             "run-tests": true,
             "config-opts": [

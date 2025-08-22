@@ -1,6 +1,6 @@
 [package]
-name = "conny"
-authors = ["Nika <nika@nikableh.moe>"]
+name = "^EXECUTABLE^"
+authors = ["^AUTHOR_NAME^ <^AUTHOR_EMAIL^>"]
 version = "0.1.0"
 edition = "2024"
 

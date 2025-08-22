@@ -26,9 +26,13 @@
             name = (pkgs.lib.importTOML ./rust-toolchain.toml).toolchain.channel;
             sha256 = "sha256-+9FmLhAOezBZCOziO0Qct1NOrfpjNsXxc/8I0c7BdKE=";
           }).toolchain;
-        conny =
+      in
+      {
+        formatter = pkgs.nixfmt-rfc-style;
+
+        packages.default =
           let
-            name = "conny";
+            name = "^EXECUTABLE^";
             version = "0.1.0";
             src = ./.;
           in
@@ -61,27 +65,21 @@
             ];
 
             meta = {
-              description = "Use OpenVPN from GUI";
-              homepage = "https://github.com/nikableh/Conny";
+              description = "^SHORT_DESCRIPTION^";
+              homepage = "^URL^";
               license = pkgs.lib.licenses.mit;
             };
           };
-      in
-      {
-        formatter = pkgs.nixfmt-rfc-style;
-
-        packages.default = conny;
 
         apps.default = {
           type = "app";
-          program = "${self.packages.${system}.default}/bin/conny";
+          program = "${self.packages.${system}.default}/bin/^EXECUTABLE^";
         };
 
         devShells.default = pkgs.mkShell {
           inputsFrom = [ self.packages.${system}.default ];
           buildInputs = [
             pkgs.bashInteractive
-            # https://github.com/NixOS/nixpkgs/issues/54312#issuecomment-455775414
             # Enable services.flatpak.enable = true; in configuration.nix, it
             # won't work without it.
             pkgs.flatpak

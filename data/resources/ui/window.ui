@@ -13,12 +13,12 @@
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">_About Conny</attribute>
+        <attribute name="label" translatable="yes">_About ^APP_NAME^</attribute>
         <attribute name="action">app.about</attribute>
       </item>
     </section>
   </menu>
-  <template class="ConnyWindow" parent="AdwApplicationWindow">
+  <template class="^APP_NAME^Window" parent="AdwApplicationWindow">
     <property name="content">
       <object class="AdwToolbarView">
         <child type="top">

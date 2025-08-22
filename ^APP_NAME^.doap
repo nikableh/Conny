@@ -5,19 +5,18 @@
   xmlns:gnome="http://api.gnome.org/doap-extensions#"
   xmlns="http://usefulinc.com/ns/doap#">
 
-  <name xml:lang="en">Conny</name>
-  <shortdesc xml:lang="en">Use OpenVPN from GUI</shortdesc>
+  <name xml:lang="en">^APP_NAME^</name>
+  <shortdesc xml:lang="en">^SHORT_DESCRIPTION^</shortdesc>
   <description xml:lang="en">
-    A GUI application for managing OpenVPN profiles and active connections.
+    ^LONG_DESCRIPTION^
   </description>
-  <bug-database rdf:resource="https://github.com/nikableh/Conny/" />
+  <bug-database rdf:resource="^URL^" />
   <category rdf:resource="http://api.gnome.org/doap-extensions#apps" />
   <programming-language>Rust</programming-language>
   <maintainer>
     <foaf:Person>
-      <foaf:name>Nika</foaf:name>
-      <foaf:mbox rdf:resource="mailto:nika@nikableh.moe" />
-      <gnome:userid>nikableh</gnome:userid>
+      <foaf:name>^AUTHOR_NAME^</foaf:name>
+      <foaf:mbox rdf:resource="mailto:^AUTHOR_EMAIL^" />
     </foaf:Person>
   </maintainer>
 </Project>

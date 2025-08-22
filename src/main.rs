@@ -9,7 +9,7 @@ use adw::{gio, glib};
 
 use crate::config::APP_NAME;
 
-use self::application::ConnyApplication;
+use self::application::^APP_NAME^Application;
 use self::config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
 
 fn main() -> glib::ExitCode {
@@ -26,6 +26,6 @@ fn main() -> glib::ExitCode {
     let res = gio::Resource::load(RESOURCES_FILE).expect("Could not load gresource file");
     gio::resources_register(&res);
 
-    let app = ConnyApplication::default();
+    let app = ^APP_NAME^Application::default();
     app.run()
 }
